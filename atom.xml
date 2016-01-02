@@ -4,7 +4,7 @@
   <subtitle><![CDATA[碎碎念……]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://kuangyeheng.github.io/"/>
-  <updated>2016-01-02T14:20:28.941Z</updated>
+  <updated>2016-01-02T17:55:48.092Z</updated>
   <id>http://kuangyeheng.github.io/</id>
   
   <author>
@@ -13,6 +13,21 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Tips]]></title>
+    <link href="http://kuangyeheng.github.io/2016/01/03/%E4%B8%80%E5%A4%A7%E6%B3%A2%E5%B8%96%E5%AD%90%E6%AD%A3%E5%9C%A8%E6%9D%A5%E8%A2%AD%E2%80%A6%E2%80%A6/"/>
+    <id>http://kuangyeheng.github.io/2016/01/03/一大波帖子正在来袭……/</id>
+    <published>2016-01-02T17:53:24.000Z</published>
+    <updated>2016-01-02T17:55:48.092Z</updated>
+    <content type="html"><![CDATA[<p>一大波好帖子正在袭来………………</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>一大波好帖子正在袭来………………</p>
+]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Hello World]]></title>
