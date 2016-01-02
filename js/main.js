@@ -1,41 +1,110 @@
-function setTitleDate()
-{
-	var body_width = $("#body").css("width")
-	var container_width = $("#container").css("width")
-	var container_margin_right = $("#container").css("margin-right");
-	var container_padding_right = $("#container").css("padding-right");
-	//var container_right = parseInt(container_margin_right) + parseInt(container_padding_right);
-	var container_right = (parseInt(body_width) - parseInt(container_width))/2 + 10;
-	$("#title-date").css("right", container_right);
-}
+require([], function (){
 
-$(document).ready(function() {
-	
-	$(window).scroll(function(){  //只要窗口滚动,就触发下面代码 
-        var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度 
-        if( scrollt >200 ){  //判断滚动后高度超过200px,就显示
-            $("#gotop").fadeIn(400); //淡出
-			$(".navbar").stop().fadeTo(400, 0.2);
-        }else{
-            $("#gotop").fadeOut(400); //如果返回或者没有超过,就淡入.必须加上stop()停止之前动画,否则会出现闪动
-			$(".navbar").stop().fadeTo(400, 1);
-        }
-    });
-    $("#gotop").click(function(){ //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
-        $("html,body").animate({scrollTop:"0px"},200);
-    });
-	$(".navbar").mouseenter(function(){
-		$(".navbar").fadeTo(100, 1);
-	});
-    $(".navbar").mouseleave(function(){
-		var scrollt = document.documentElement.scrollTop + document.body.scrollTop;
-		if ( scrollt > 200) {
-			$(".navbar").fadeTo(100, 0.2);
+	var isMobileInit = false;
+	var loadMobile = function(){
+		require(['/js/mobile.js'], function(mobile){
+			mobile.init();
+			isMobileInit = true;
+		});
+	}
+	var isPCInit = false;
+	var loadPC = function(){
+		require(['/js/pc.js'], function(pc){
+			pc.init();
+			isPCInit = true;
+		});
+	}
+
+	var browser={
+	    versions:function(){
+	    var u = window.navigator.userAgent;
+	    return {
+	        trident: u.indexOf('Trident') > -1, //IE内核
+	        presto: u.indexOf('Presto') > -1, //opera内核
+	        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+	        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+	        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+	        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+	        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+	        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+	        iPad: u.indexOf('iPad') > -1, //是否为iPad
+	        webApp: u.indexOf('Safari') == -1 ,//是否为web应用程序，没有头部与底部
+	        weixin: u.indexOf('MicroMessenger') == -1 //是否为微信浏览器
+	        };
+	    }()
+	}
+
+	$(window).bind("resize", function(){
+		if(isMobileInit && isPCInit){
+			$(window).unbind("resize");
+			return;
 		}
-	});	
-	setTitleDate();
-});
+		var w = $(window).width();
+		if(w >= 700){
+			loadPC();
+		}else{
+			loadMobile();
+		}
+	});
 
-$(window).resize(function () {
-	setTitleDate();
-})
+	if(browser.versions.mobile === true || $(window).width() < 700){
+		loadMobile();
+	}else{
+		loadPC();
+	}
+
+	//是否使用fancybox
+	if(yiliaConfig.fancybox === true){
+		require(['/fancybox/jquery.fancybox.js'], function(pc){
+			var isFancy = $(".isFancy");
+			if(isFancy.length != 0){
+				var imgArr = $(".article-inner img");
+				for(var i=0,len=imgArr.length;i<len;i++){
+					var src = imgArr.eq(i).attr("src");
+					var title = imgArr.eq(i).attr("alt");
+					imgArr.eq(i).replaceWith("<a href='"+src+"' title='"+title+"' rel='fancy-group' class='fancy-ctn fancybox'><img src='"+src+"' title='"+title+"'></a>");
+				}
+				$(".article-inner .fancy-ctn").fancybox();
+			}
+		});
+		
+	}
+	//是否开启动画
+	if(yiliaConfig.animate === true){
+
+		require(['/js/jquery.lazyload.js'], function(){
+			//avatar
+			$(".js-avatar").attr("src", $(".js-avatar").attr("lazy-src"));
+			$(".js-avatar")[0].onload = function(){
+				$(".js-avatar").addClass("show");
+			}
+		});
+		
+		if(yiliaConfig.isHome === true){
+			//content
+			function showArticle(){
+				$(".article").each(function(){
+					if( $(this).offset().top <= $(window).scrollTop()+$(window).height() && !($(this).hasClass('show')) ) {
+						$(this).removeClass("hidden").addClass("show");
+						$(this).addClass("is-hiddened");
+					}else{
+						if(!$(this).hasClass("is-hiddened")){
+							$(this).addClass("hidden");
+						}
+					}
+				});
+			}
+			$(window).on('scroll', function(){
+				showArticle();
+			});
+			showArticle();
+		}
+		
+	}
+	
+	//是否新窗口打开链接
+	if(yiliaConfig.open_in_new == true){
+		$(".article a[href]").attr("target", "_blank")
+	}
+	
+});
