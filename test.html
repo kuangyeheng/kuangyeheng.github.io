@@ -7,7 +7,7 @@
 	<script src="drag.js"></script>
 	<style>
 		html,body{height:100%;margin:0;}
-		#test{
+		#test,#test1{
 			width:100px;
 			height:100px;
 			background:orange;
@@ -17,17 +17,21 @@
 			top:50%;
 			z-index:100;
 		}
+		#test1{
+			background:blue;
+			z-index:5;
+			border-radius:0;
+		}
 	</style>
 </head>
 <body>
 	<div id="test"></div>
+	<!-- <div id="test1"></div> -->
 	<script>
 		var test = document.getElementById('test');
+		var test1 = document.getElementById('test1');
 		var DragByTranslate = new DragByTranslate(test);
 		DragByTranslate.init();
-		test.addEventListener('touchstart',function () {
-			console.log(123);
-		},false);
 	</script>
 </body>
 </html>
