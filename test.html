@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="drag.js"></script>
+	<style>
+		html,body{height:100%;margin:0;}
+		#test{
+			width:100px;
+			height:100px;
+			background:orange;
+			border-radius:100%;
+			position:absolute;
+			left:50%;
+			top:50%;
+			z-index:100;
+		}
+	</style>
+</head>
+<body>
+	<div id="test"></div>
+	<script>
+		var test = document.getElementById('test');
+		var DragByTranslate = new DragByTranslate(test);
+		DragByTranslate.init();
+		test.addEventListener('touchstart',function () {
+			console.log(123);
+		},false);
+	</script>
+</body>
+</html>
