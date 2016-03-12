@@ -45,9 +45,9 @@
         }
         function touchEnd () {
             ele.removeEventListener('touchmove',touchMove);
-            document.removeEventListener('touchend',touchEnd);
+            ele.removeEventListener('touchend',touchEnd);
         }
-        document.addEventListener('touchstart',function (e) {
+        ele.addEventListener('touchstart',function (e) {
             e.preventDefault();
             _this.width=ele.offsetWidth;
             _this.height=ele.offsetHeight;
@@ -59,7 +59,7 @@
             _this.minTranslateY=-_this.pagePositon.top;
             _this.maxTranslateY=_this.winHeight - _this.pagePositon.top - _this.height;
             ele.addEventListener('touchmove', touchMove, false);
-            document.addEventListener('touchend', touchEnd, false);
+            ele.addEventListener('touchend', touchEnd, false);
         },false);
     };
 
