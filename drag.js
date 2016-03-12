@@ -39,8 +39,8 @@
                 translateY = translateY < _this.minTranslateY ? _this.minTranslateY : translateY;
                 translateX = translateX > _this.maxTranslateX ? _this.maxTranslateX : translateX;
                 translateY = translateY > _this.maxTranslateY ? _this.maxTranslateY : translateY;
-                ele.style.transform='translate('+translateX+'px,'+translateY+'px)';
-                ele.style.webkitTransform='translate('+translateX+'px,'+translateY+'px)';
+                ele.style.transform='translate3d('+translateX+'px,'+translateY+'px,10px)';
+                ele.style.webkitTransform='translate3d('+translateX+'px,'+translateY+'px,10px)';
             }
         }
         function touchEnd () {
