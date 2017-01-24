@@ -1,5 +1,7 @@
 [点击下载简历](dist/邝业亨-个人简历.pdf)![download](src/images/down.png "下载简历")
 
+>这是一个比较geek的简历，用的Markdown编写，上面链接的pdf由chrome导出
+
 # 个人风采
 
 ![我是亨记](src/images/me.png "我是亨记")
