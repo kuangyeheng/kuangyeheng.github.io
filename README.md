@@ -12,7 +12,7 @@
 
 - Wechat: kuangyeheng
 
-
+    ![微信二维码](src/images/qrcode.png "二维码微信")
 
 ---
 
