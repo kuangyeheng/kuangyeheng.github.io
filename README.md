@@ -1,3 +1,5 @@
+[点击下载简历](dist/邝业亨-个人简历.pdf):arrow_down:
+
 # 个人风采
 
 ![我是亨记](src/images/me.png "我是亨记")
