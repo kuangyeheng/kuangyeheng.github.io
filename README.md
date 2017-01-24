@@ -1,4 +1,4 @@
-[点击下载简历](dist/邝业亨-个人简历.pdf):arrow_down:
+[点击下载简历](dist/邝业亨-个人简历.pdf)![download](src/images/down.png "下载简历")
 
 # 个人风采
 
@@ -12,7 +12,7 @@
 
 - Wechat: kuangyeheng
 
-    ![微信二维码](src/images/qrcode.png "二维码微信")
+
 
 ---
 
