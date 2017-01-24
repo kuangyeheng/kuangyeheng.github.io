@@ -77,7 +77,7 @@
  - [gulp-dot-preparse](https://github.com/kuangyeheng/gulp-dot-preparse)：预编译dot模板成UMD规范的module
  - [workflow](https://github.com/kuangyeheng/workflow)：一套极易使用的前端工作流，让前端开发高度自动化
 
-## 技能清单
+# 技能清单
 
 以下均为我熟练使用的技能（均为深思熟虑后才写上）
 
