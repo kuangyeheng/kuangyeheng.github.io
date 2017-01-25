@@ -28,7 +28,7 @@
  - Github：[https://github.com/kuangyeheng](https://github.com/kuangyeheng)
 
  - 期望职位：资深前端开发工程师
- - 期望薪资：税前18k~25k
+ - 期望薪资：税前22k~25k
  - 期望城市：广州or深圳
 
 ---
